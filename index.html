@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrindCo | Premium Coffee & Smoothies</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+:root{
+  --green:#0f5c3b;
+  --dark:#073d2a;
+  --pink:#f6b6c8;
+  --cream:#fffaf5;
+  --soft:#ffe8ef;
+  --text:#2d2d2d;
+  --white:#ffffff;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:linear-gradient(135deg,var(--cream),var(--soft));
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+header{
+  width:92%;
+  margin:20px auto;
+  padding:15px 30px;
+  background:rgba(255,255,255,.92);
+  border-radius:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:15px;
+  z-index:999;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:26px;
+  font-weight:900;
+  color:var(--green);
+}
+
+.logo img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+nav a{
+  text-decoration:none;
+  margin-left:25px;
+  color:var(--green);
+  font-weight:800;
+}
+
+nav a:hover{color:#d67b96}
+
+.hero{
+  width:92%;
+  margin:70px auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+  align-items:center;
+  min-height:80vh;
+}
+
+.hero-text small{
+  color:#d67b96;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.hero-text h1{
+  font-size:72px;
+  line-height:1.05;
+  color:var(--green);
+  margin:18px 0;
+}
+
+.hero-text p{
+  font-size:18px;
+  line-height:1.8;
+  max-width:620px;
+  margin-bottom:30px;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 32px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:900;
+  border:none;
+  cursor:pointer;
+}
+
+.btn:hover{transform:translateY(-3px)}
+
+.btn-light{
+  background:white;
+  color:var(--green);
+  border:2px solid var(--green);
+  margin-left:12px;
+}
+
+.hero-image{
+  background:white;
+  padding:22px;
+  border-radius:40px;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+  animation:float 4s ease-in-out infinite;
+}
+
+.hero-image img{
+  width:100%;
+  border-radius:28px;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+section{
+  width:92%;
+  margin:90px auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.section-title h2{
+  font-size:46px;
+  color:var(--green);
+  margin-bottom:10px;
+}
+
+.section-title p{
+  font-size:18px;
+  color:#555;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.feature-card{
+  background:white;
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.feature-card:hover{transform:translateY(-8px)}
+
+.feature-card h3{
+  color:var(--green);
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.feature-card p{
+  line-height:1.8;
+  color:#555;
+}
+
+.image-card{
+  max-width:820px;
+  margin:auto;
+  padding:20px;
+  background:white;
+  border-radius:32px;
+  border:1px solid rgba(15,92,59,.12);
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.image-card img{
+  width:100%;
+  max-height:560px;
+  object-fit:contain;
+  border-radius:24px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.gallery img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.gallery img:hover{transform:scale(1.03)}
+
+.filters{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.filters button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  margin:7px;
+  background:white;
+  font-weight:900;
+  color:var(--green);
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.filters button:hover{
+  background:var(--green);
+  color:white;
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.menu-card{
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.menu-card:hover{transform:translateY(-8px)}
+
+.menu-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.menu-info{
+  padding:25px;
+}
+
+.menu-info h3{
+  color:var(--green);
+  margin-bottom:12px;
+  font-size:25px;
+}
+
+.menu-info p{
+  line-height:1.7;
+  color:#555;
+}
+
+.price{
+  font-size:24px;
+  font-weight:900;
+  color:#d67b96;
+  margin:15px 0;
+}
+
+.cart{
+  background:white;
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+  margin-top:40px;
+}
+
+.cart h3{
+  color:var(--green);
+  margin-bottom:15px;
+}
+
+.cart ul{
+  padding-left:20px;
+  margin-bottom:20px;
+}
+
+.qr-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  background:white;
+  padding:40px;
+  border-radius:35px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.qr-text h2{
+  font-size:42px;
+  color:var(--green);
+  margin-bottom:15px;
+}
+
+.qr-text p{
+  line-height:1.9;
+  margin-bottom:25px;
+  color:#555;
+}
+
+.premium-qr-card{
+  background:white;
+  padding:30px;
+  border-radius:35px;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+  max-width:370px;
+  margin:auto;
+}
+
+.premium-qr-card:hover{
+  transform:translateY(-8px);
+}
+
+.qr-image{
+  width:100%;
+  border-radius:25px;
+  display:block;
+}
+
+.form-box{
+  max-width:650px;
+  margin:auto;
+  background:white;
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:900;
+  color:var(--green);
+}
+
+input,textarea{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:16px;
+  margin-bottom:20px;
+  outline:none;
+}
+
+textarea{
+  height:110px;
+  resize:none;
+}
+
+.login-section{
+  background:var(--green);
+  padding:90px 0;
+}
+
+.login-section .section-title h2,
+.login-section .section-title p{
+  color:white;
+}
+
+.login-box{
+  max-width:470px;
+  margin:auto;
+  background:white;
+  padding:40px;
+  border-radius:30px;
+  box-shadow:0 20px 45px rgba(0,0,0,.12);
+}
+
+.login-box img{
+  width:110px;
+  display:block;
+  margin:auto;
+  margin-bottom:20px;
+  border-radius:50%;
+}
+
+.login-box h3{
+  text-align:center;
+  color:var(--green);
+  margin-bottom:20px;
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+
+.about img{
+  width:100%;
+  border-radius:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.about-text{
+  background:white;
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.about-text h2{
+  font-size:40px;
+  color:var(--green);
+  margin-bottom:15px;
+}
+
+.about-text p{
+  line-height:1.9;
+  color:#555;
+}
+
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.popup-content{
+  width:90%;
+  max-width:450px;
+  background:white;
+  padding:35px;
+  border-radius:30px;
+  text-align:center;
+}
+
+.popup-content h2{
+  color:var(--green);
+  margin-bottom:15px;
+}
+
+footer{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:35px;
+  margin-top:80px;
+}
+
+@media(max-width:900px){
+  header{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  nav a{
+    margin:7px;
+    display:inline-block;
+  }
+
+  .hero,
+  .qr-wrap,
+  .about{
+    grid-template-columns:1fr;
+  }
+
+  .hero-text,
+  .qr-text{
+    text-align:center;
+  }
+
+  .hero-text h1{
+    font-size:48px;
+  }
+
+  .btn-light{
+    margin-left:0;
+    margin-top:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="GrindCo Logo">
+    <span>GrindCo</span>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#scan">QR</a>
+    <a href="#booking">Booking</a>
+    <a href="#login">Login</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <small>COFFEE • SMOOTHIES • PREMIUM EXPERIENCE</small>
+    <h1>Fresh drinks for better days.</h1>
+    <p>
+      GrindCo is a premium coffee and smoothie experience designed with modern digital ordering,
+      elegant visuals and smooth customer interactions.
+    </p>
+    <a href="#menu" class="btn">View Menu</a>
+    <a href="#booking" class="btn btn-light">Book Table</a>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/hero-brand.jpg" alt="GrindCo hero image">
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Why GrindCo Works</h2>
+    <p>Modern customer experience with premium café aesthetics.</p>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h3>Fast Ordering</h3>
+      <p>Customers browse the menu and submit orders quickly with a clean interface.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Smart Booking</h3>
+      <p>Table reservations become easier and more organized through digital booking.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Premium Design</h3>
+      <p>Elegant pastel visuals inspired by modern luxury café experiences.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Signature Coffee Collection</h2>
+    <p>Premium handcrafted coffees and smoothies.</p>
+  </div>
+
+  <div class="image-card">
+    <img src="images/coffee-menu.png" alt="GrindCo coffee menu">
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>GrindCo Experience</h2>
+    <p>Fresh drinks, desserts and premium café visuals.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="images/iced-coffee.jpg" alt="Iced coffee">
+    <img src="images/iced-latte.jpg" alt="Iced latte">
+    <img src="images/waffles.jpg" alt="Waffles">
+    <img src="images/croissant-tray.jpg" alt="Croissants">
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-title">
+    <h2>Digital Menu</h2>
+    <p>Filter drinks and add items to cart.</p>
+  </div>
+
+  <div class="filters">
+    <button onclick="filterMenu('all')">All</button>
+    <button onclick="filterMenu('coffee')">Coffee</button>
+    <button onclick="filterMenu('smoothie')">Smoothies</button>
+    <button onclick="filterMenu('food')">Food</button>
+  </div>
+
+  <div class="menu-grid">
+    <div class="menu-card menu-item coffee">
+      <img src="images/iced-coffee.jpg" alt="Signature Grind Blend">
+      <div class="menu-info">
+        <h3>Signature Grind Blend</h3>
+        <p>Premium espresso served hot or iced.</p>
+        <div class="price">R38</div>
+        <button class="btn" onclick="addToCart('Signature Grind Blend',38)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="menu-card menu-item coffee">
+      <img src="images/iced-latte.jpg" alt="Vanilla Cloud Latte">
+      <div class="menu-info">
+        <h3>Vanilla Cloud Latte</h3>
+        <p>Smooth espresso with vanilla cream finish.</p>
+        <div class="price">R42</div>
+        <button class="btn" onclick="addToCart('Vanilla Cloud Latte',42)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="menu-card menu-item smoothie">
+      <img src="images/smoothie-bar.jpg" alt="Pink Paradise">
+      <div class="menu-info">
+        <h3>Pink Paradise</h3>
+        <p>Fresh strawberry and dragon fruit smoothie.</p>
+        <div class="price">R48</div>
+        <button class="btn" onclick="addToCart('Pink Paradise',48)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="menu-card menu-item food">
+      <img src="images/waffles.jpg" alt="Berry Waffle Plate">
+      <div class="menu-info">
+        <h3>Berry Waffle Plate</h3>
+        <p>Fresh waffles with berries and syrup.</p>
+        <div class="price">R55</div>
+        <button class="btn" onclick="addToCart('Berry Waffle Plate',55)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+    <h3>Total: R<span id="cartTotal">0</span></h3>
+    <button class="btn" onclick="checkoutOrder()">Submit Order</button>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Full Café Board</h2>
+    <p>A visual menu board for quick customer viewing.</p>
+  </div>
+
+  <div class="image-card">
+    <img src="images/menu-board.jpg" alt="GrindCo menu board">
+  </div>
+</section>
+
+<section id="scan">
+  <div class="section-title">
+    <h2>Scan & Order</h2>
+    <p>Fast digital ordering through the GrindCo QR experience.</p>
+  </div>
+
+  <div class="qr-wrap">
+    <div class="qr-text">
+      <h2>Quick Café Access</h2>
+      <p>
+        Scan the GrindCo QR code to instantly access the digital menu,
+        specials and café ordering experience.
+      </p>
+      <a href="#menu" class="btn">Open Digital Menu</a>
+    </div>
+
+    <div class="premium-qr-card">
+      <img src="images/qr-code.png" alt="GrindCo QR Code" class="qr-image">
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="section-title">
+    <h2>Book a Table</h2>
+    <p>Reserve your GrindCo experience.</p>
+  </div>
+
+  <div class="form-box">
+    <form id="bookingForm">
+      <label>Full Name</label>
+      <input type="text" required>
+
+      <label>Email Address</label>
+      <input type="email" required>
+
+      <label>Date</label>
+      <input type="date" required>
+
+      <label>Time</label>
+      <input type="time" required>
+
+      <label>Guests</label>
+      <input type="number" min="1" required>
+
+      <label>Special Request</label>
+      <textarea placeholder="Birthday setup, quiet corner, window seat..."></textarea>
+
+      <button class="btn" type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</section>
+
+<section class="login-section" id="login">
+  <div class="section-title">
+    <h2>Customer Login</h2>
+    <p>Sign in to Grindco </p>
+  </div>
+
+  <div class="login-box">
+    <img src="images/logo.png" alt="GrindCo Logo">
+    <h3>Sign In</h3>
+
+    <form onsubmit="fakeLogin(event)">
+      <label>Email Address</label>
+      <input type="email" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <button class="btn" type="submit">Sign In</button>
+    </form>
+
+    <p id="loginMessage"></p>
+  </div>
+</section>
+
+<section>
+  <div class="about">
+    <img src="images/smoothie-bar.jpg" alt="GrindCo café interior">
+
+    <div class="about-text">
+      <h2>About GrindCo</h2>
+      <p>
+        GrindCo combines premium café aesthetics with modern digital convenience.
+        Customers can browse menus, scan QR codes, reserve tables and enjoy
+        a clean interactive experience inspired by modern coffee culture.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <p id="popupText"></p>
+    <button class="btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Grindco Coffee & Smoothies. All rights reserved.</p>
+</footer>
+
+<script>
+let cart = [];
+let total = 0;
+
+function filterMenu(category){
+  const items = document.querySelectorAll(".menu-item");
+
+  items.forEach(item=>{
+    if(category === "all" || item.classList.contains(category)){
+      item.style.display = "block";
+    }else{
+      item.style.display = "none";
+    }
+  });
+}
+
+function addToCart(name,price){
+  cart.push({name,price});
+  total += price;
+  updateCart();
+}
+
+function updateCart(){
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+
+  cartItems.innerHTML = "";
+
+  cart.forEach(item=>{
+    const li = document.createElement("li");
+    li.textContent = item.name + " - R" + item.price;
+    cartItems.appendChild(li);
+  });
+
+  cartTotal.textContent = total;
+}
+
+function checkoutOrder(){
+  if(cart.length === 0){
+    showPopup("Cart Empty","Please add items before submitting your order.");
+    return;
+  }
+
+  showPopup("Order Submitted","Your GrindCo order has been received successfully.");
+
+  cart = [];
+  total = 0;
+  updateCart();
+}
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  showPopup("Booking Confirmed","Your table booking request has been submitted.");
+  this.reset();
+});
+
+function fakeLogin(event){
+  event.preventDefault();
+
+  const message = document.getElementById("loginMessage");
+
+  message.style.color = "#0f5c3b";
+  message.style.marginTop = "15px";
+  message.textContent = "Login preview successful. AWS Cognito can be connected later.";
+}
+
+function showPopup(title,text){
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("popupTitle").textContent = title;
+  document.getElementById("popupText").textContent = text;
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
